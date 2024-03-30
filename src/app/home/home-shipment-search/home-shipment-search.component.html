@@ -1,2 +1,43 @@
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="left">Store Engagement</p>
+            </div>
+            <div class="col">
+                <p class="right">Store Associate</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-<h1>{{ 'home.LABEL_WhatDoYouWantToDO' | translate }}</h1>
+<div class="main-body">
+    <h1 class="title  center">What do you want to do?</h1>
+    <div class="form">
+        <h2 class="center">Shipment Search</h2>
+        <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Order #" formControlName="orderNumber">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Shipment #" formControlName="shipmentNumber">
+            </div>
+            <div class=" mb-3">
+                <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+            </div>
+            <div class=" mb-3">
+                <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" placeholder="Email ID" formControlName="email">
+            </div>
+            <div class="mb-3">
+                <input type="tel" class="form-control" placeholder="Phone number" formControlName="phoneNumber">
+            </div>
+            <div class="text-end">
+                <button type="button" class="btn btn-outline-primary" (click)="onReset()">Reset</button>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+</div>

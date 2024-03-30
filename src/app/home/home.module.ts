@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeShipmentSearchComponent } from './home-shipment-search/home-shipment-search.component';
-import { AppModule } from '../app.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +14,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }
