@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HelperService } from './helper.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shipment-search-app';
+  constructor(private helperService: HelperService) {
+    helperService.setDefaultLang('en');
+  }
 }

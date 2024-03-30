@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeShipmentSearchComponent } from './home-shipment-search/home-shipment-search.component';
+import { AppModule } from '../app.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { HomeShipmentSearchComponent } from './home-shipment-search/home-shipmen
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    TranslateModule
   ]
 })
 export class HomeModule { }
