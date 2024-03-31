@@ -1,1 +1,77 @@
-<p>shipment-results works!</p>
+<div class="main-body">
+    <div class="main-container">
+        <div class="sub-container">
+            <div class="back-btn">
+                <button type="button" class="btn btn-outline-primary" (click)="onBack()">&lt; </button>
+            </div>
+            <div class="title-container">
+                <label>{{ 'shipmentResults.LABEL_ShipmentSearchResults' | translate }}</label>
+            </div>
+            <div class="close-btn">
+                <button type="button" class="btn btn-outline-primary" (click)="onClose()">{{ 'shipmentResults.BUTTON_Close' | translate }}</button>
+            </div>
+        </div>
+        <hr/>
+
+        <div class="sub-container">
+            <div class="text"><strong>{{filteredShipmentListResponse.Shipments.TotalNumberOfRecords}}</strong> {{ 'shipmentResults.TEXT_Results' | translate }}</div>
+            <div  class="btn btn-primary filter-icon" (click)="openFilterPopUp()">{{ 'shipmentResults.TEXT_FilterIcon' | translate }}</div>
+        </div>
+        <hr/>
+
+        <div *ngFor="let shipment of filteredShipmentListResponse.Shipments.Shipment"  (click)="onTileClick(shipment)" class="shipment-tile">
+            <div class="row" >
+                <div class="col-4 ">
+                    <label>{{ 'home.LABEL_OrderNumber' | translate }}{{shipment.OrderNo }}</label>
+                    <p class="shipment-info">{{ shipment.ShipmentLines.TotalNumberOfRecords + " "}} {{ 'shipmentResults.TEXT_Products' | translate }}</p>
+                    <p class="shipment-info">{{ 'shipmentResults.TEXT_Carrier' | translate }}{{ shipment.ScacAndService}}</p>
+                    <p class="shipment-info">{{ 'shipmentResults.TEXT_ShipmentNo' | translate }}<strong  class="text-primary"> {{ shipment.ShipmentNo}}</strong></p>
+                </div>
+                <div class="col-4">
+                    <label class="status-msg ">{{ shipment.Status }}</label>
+                    <p class="shipment-info">{{'shipmentResults.TEXT_AssignedTo' | translate }}{{ shipment.AssignedToUserId  }}</p>
+                    @if(shipment.DeliveryMethod==='PICK'){
+                        <p class="shipment-info"><span>{{'shipmentResults.TEXT_ExpectedPickupDate' | translate }} </span>{{ shipment.ExpectedShipmentDate}}</p>
+                    }@else {
+                        <p class="shipment-info"><span>{{'shipmentResults.TEXT_ExpectedShipDate' | translate }} </span>{{ shipment.ExpectedShipmentDate}}</p>
+                    }
+                   
+                </div>
+                <div class="col-4">
+                    <label class="shipment-info">{{ 'shipmentResults.TEXT_CustomerInfo' | translate }}</label>
+                    <p class="shipment-info">{{ shipment.BillToAddress.FirstName +" "+shipment.BillToAddress.LastName   }}</p>
+                    <p class="shipment-info">{{ 'home.LABEL_PhoneNumber' | translate }}{{ shipment.DayPhone }}</p>
+                    <p class="shipment-info">{{ 'home.LABEL_Email' | translate }}{{ shipment.EMailID }}</p>
+                </div>
+            </div>
+            <hr/>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ 'shipmentResults.LABEL_Refine' | translate }}</h4>
+                <button type="button" class="btn-close" (click)="closeFilterPopUp()" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <fieldset>
+                        <legend>{{ 'shipmentResults.LABEL_Status' | translate }}</legend>
+                        <div *ngFor="let status of statuses" class="form-check">
+                            <input class="form-check-input" type="checkbox" [id]="status" [value]="status">
+                            <label class="form-check-label" [for]="status">{{ status }}</label>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onResetFilters()">{{ 'shipmentResults.BUTTON_Reset' | translate }}</button>
+                <button type="button" class="btn btn-primary" (click)="onFiltersApplied()">{{ 'shipmentResults.BUTTON_Apply' | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

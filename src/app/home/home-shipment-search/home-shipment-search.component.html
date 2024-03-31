@@ -1,43 +1,29 @@
-<div class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <p class="left">Store Engagement</p>
-            </div>
-            <div class="col">
-                <p class="right">Store Associate</p>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="main-body">
-    <h1 class="title  center">What do you want to do?</h1>
+    <h1 class="title center">{{ 'home.LABEL_WhatDoYouWantToDO' | translate }}</h1>
     <div class="form">
-        <h2 class="center">Shipment Search</h2>
+        <h2 class="center">{{ 'home.LABEL_ShipmentSearch' | translate }}</h2>
         <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Order #" formControlName="orderNumber">
+                <input type="text" class="form-control" placeholder="{{ 'home.LABEL_OrderNumber' | translate }}" formControlName="orderNumber">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Shipment #" formControlName="shipmentNumber">
+                <input type="text" class="form-control" placeholder="{{ 'home.LABEL_ShipmentNumber' | translate }}" formControlName="shipmentNumber">
             </div>
             <div class=" mb-3">
-                <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
+                <input type="text" class="form-control" placeholder="{{ 'home.LABEL_FirstName' | translate }}" formControlName="firstName">
             </div>
             <div class=" mb-3">
-                <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+                <input type="text" class="form-control" placeholder="{{ 'home.LABEL_LastName' | translate }}" formControlName="lastName">
             </div>
             <div class="mb-3">
-                <input type="email" class="form-control" placeholder="Email ID" formControlName="email">
+                <input type="email" class="form-control" placeholder="{{ 'home.LABEL_Email' | translate }}" formControlName="email">
             </div>
             <div class="mb-3">
-                <input type="tel" class="form-control" placeholder="Phone number" formControlName="phoneNumber">
+                <input type="tel" class="form-control" placeholder="{{ 'home.LABEL_PhoneNumber' | translate }}" formControlName="phoneNumber">
             </div>
             <div class="text-end">
-                <button type="button" class="btn btn-outline-primary" (click)="onReset()">Reset</button>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="button" class="btn btn-outline-primary" style="margin-right: 10px;" (click)="onReset()">{{ 'home.BUTTON_Reset' | translate }}</button>
+                <button type="submit" class="btn btn-primary">{{ 'home.BUTTON_Search' | translate }}</button>
             </div>
         </form>
     </div>
-</div>

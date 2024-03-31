@@ -1,5 +1,48 @@
 {
-    "home": {
-      "LABEL_WhatDoYouWantToDO": "french What do you want to do?"
-    }
+  "home": {
+  "LABEL_WhatDoYouWantToDO": "Que voulez-vous faire ?",
+  "LABEL_ShipmentSearch": "Recherche d'expédition",
+  "LABEL_OrderNumber": "Numéro de commande",
+  "LABEL_ShipmentNumber": "Numéro d'expédition",
+  "LABEL_FirstName": "Prénom",
+  "LABEL_LastName": "Nom de famille",
+  "LABEL_Email": "E-mail",
+  "LABEL_PhoneNumber": "Numéro de téléphone",
+  "BUTTON_Search": "Rechercher",
+  "BUTTON_Reset": "Réinitialiser"
+  },
+  "shipmentResults": {
+  "LABEL_ShipmentSearchResults": "Résultats de la recherche d'expédition",
+  "BUTTON_Close": "Fermer",
+  "TEXT_Results": "résultats",
+  "TEXT_FilterIcon": "Filtre",
+  "TEXT_Products": "produits",
+  "TEXT_Carrier": "Transporteur : ",
+  "TEXT_ShipmentNo": "Numéro d'expédition ",
+  "TEXT_AssignedTo": "Assigné à : ",
+  "TEXT_ExpectedPickupDate": "Date d'enlèvement prévue : ",
+  "TEXT_ExpectedShipDate": "Date d'expédition prévue : ",
+  "TEXT_CustomerInfo": "Informations sur le client",
+  "LABEL_Refine": "Affiner",
+  "LABEL_Status": "Statut",
+  "BUTTON_Reset": "Réinitialiser",
+  "BUTTON_Apply": "Appliquer"
+  },
+  "shipmentDetails": {
+  "LABEL_ShipmentSummary": "Résumé de l'expédition",
+  "LABEL_ShipmentNumber": "Numéro d'expédition :",
+  "LABEL_ExpectedShipDate": "Date d'expédition prévue :",
+  "LABEL_ExpectedPickUpDate": "Date d'enlèvement prévue :",
+  "LABEL_Carrier": "Transporteur :",
+  "LABEL_CustomerInfo": "Informations sur le client :",
+  "LABEL_AssignedTo": "Assigné à :",
+  "LABEL_BillTo": "Facturer à :",
+  "LABEL_ShipTo": "Expédier à :",
+  "BUTTON_ShowInfo": "Afficher les informations",
+  "BUTTON_HideInfo": "Masquer les informations",
+  "LABEL_Products": "Produits",
+  "STATUS_PackingInProgress": "Emballage en cours",
+  "BUTTON_Back": "<",
+  "BUTTON_Close": "Fermer"
+  }
   }

@@ -1,19 +1,28 @@
-// desktop tablet landscape
+
 @media (max-width: 1023px) {
     .title {
         font-size: 1.5rem; 
       }
-      //todo add sizes for other classes
+      .form-title {
+        font-size: 1.5rem;
+      }
 }
 
-// tablet
 @media (max-width: 767px) {
+  .title {
+    font-size: 1.25rem; 
+  }
     .form-title {
         font-size: 1.25rem;
       }
 }
 
-// mobile
 @media (max-width: 480px) {
+  .title {
+    font-size: 1.15rem; 
+  }
+  .form-title {
+    font-size: 1.15rem;
+  }
 
 }

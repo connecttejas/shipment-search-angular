@@ -1,0 +1,33 @@
+$primary-color: #007bff;
+
+.header {
+  background-color: #313131;
+  color: #fff;
+  padding-top: 15px;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.switch-language {
+  background-color: #313131;
+  color: #fff; 
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.switch-language:hover {
+  background-color: #666;
+}
+
+
+.app-container {
+  background-color: #F5F5F5;
+  height: 100%;
+}

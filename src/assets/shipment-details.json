@@ -15,7 +15,7 @@
             "Phonenumber": "1234567890",
             "AddressID": "200001",
             "AddressLine1": "987, Broadview Avenue",
-            "AddressLine2": "",
+            "AddressLine2": "32A",
             "City": "Omaha",
             "Country": "US",
             "State": "NE",
@@ -46,7 +46,7 @@
                         "ItemDetails": {
                             "DisplayUnitOfMeasure": "Each",
                             "Description": "Frigidaire Window Air Conditioner 1200-BTU",
-                            "ImageUrl": "<PATH_TO_IMAGE>",
+                            "ImageUrl": "../../../../../assets/images/air-conditioner.jpg",
                             "ItemID": "100001"
                         }
                     }
@@ -58,7 +58,7 @@
                         "ItemDetails": {
                             "DisplayUnitOfMeasure": "Each",
                             "Description": "Hunter Regalia 60-in New Bronze Ceiling Fan",
-                            "ImageUrl": "<PATH_TO_IMAGE>",
+                            "ImageUrl": "../../../../../assets/images/ceiling-fan.jpg",
                             "ItemID": "100002 "
                         }
                     }
@@ -67,3 +67,4 @@
         }
     }
 }
+

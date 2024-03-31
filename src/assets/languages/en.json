@@ -1,5 +1,48 @@
 {
-    "home": {
-      "LABEL_WhatDoYouWantToDO": "What do you want to do?"
-    }
+  "home": {
+    "LABEL_WhatDoYouWantToDO": "What do you want to do?",
+    "LABEL_ShipmentSearch": "Shipment Search",
+    "LABEL_OrderNumber": "Order #",
+    "LABEL_ShipmentNumber": "Shipment #",
+    "LABEL_FirstName": "First Name",
+    "LABEL_LastName": "Last Name",
+    "LABEL_Email": "Email ID",
+    "LABEL_PhoneNumber": "Phone number",
+    "BUTTON_Search": "Search",
+    "BUTTON_Reset": "Reset"
+  },
+  "shipmentResults": {
+    "LABEL_ShipmentSearchResults": "Shipment Search Results",
+    "BUTTON_Close": "Close",
+    "TEXT_Results": "results",
+    "TEXT_FilterIcon": "Filter",
+    "TEXT_Products": "products",
+    "TEXT_Carrier": "Carrier: ",
+    "TEXT_ShipmentNo": "Shipment # ",
+    "TEXT_AssignedTo": "Assigned to: ",
+    "TEXT_ExpectedPickupDate": "Expected Pickup Date: ",
+    "TEXT_ExpectedShipDate": "Expected Ship Date: ",
+    "TEXT_CustomerInfo": "Customer Info",
+    "LABEL_Refine": "Refine",
+    "LABEL_Status": "Status",
+    "BUTTON_Reset": "Reset",
+    "BUTTON_Apply": "Apply"
+  },
+  "shipmentDetails": {
+    "LABEL_ShipmentSummary": "Shipment Summary",
+    "LABEL_ShipmentNumber": "Shipment number:",
+    "LABEL_ExpectedShipDate": "Expected Ship Date:",
+    "LABEL_ExpectedPickUpDate": "Expected Pickup Date:",
+    "LABEL_Carrier": "Carrier:",
+    "LABEL_CustomerInfo": "Customer info:",
+    "LABEL_AssignedTo": "Assigned to:",
+    "LABEL_BillTo": "Bill to:",
+    "LABEL_ShipTo": "Ship To:",
+    "BUTTON_ShowInfo": "Show Info",
+    "BUTTON_HideInfo": "Hide Info",
+    "LABEL_Products": "Products",
+    "STATUS_PackingInProgress": "Packing in Progress",
+    "BUTTON_Back": "<",
+    "BUTTON_Close": "Close"
   }
+}

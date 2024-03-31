@@ -1,1 +1,120 @@
-<p>shipment-details works!</p>
+<div class="main-body">
+    <div class="main-container">
+        <div class="container">
+            <div class="back-btn">
+                <button type="button" class="btn btn-outline-primary" (click)="onBack()">{{ 'shipmentDetails.BUTTON_Back' | translate }}</button>
+            </div>
+            <div class="vertically-aligned">
+                <label>{{ 'shipmentDetails.LABEL_ShipmentSummary' | translate }}</label>
+                <div>{{ orderId }}</div>
+            </div>
+            <div class="close-btn">
+                <button type="button" class="btn btn-outline-primary" (click)="onClose()">{{ 'shipmentDetails.BUTTON_Close' | translate }}</button>
+            </div>
+        </div>
+        <hr/>
+
+        @if(isDataAvailable){
+        <div class="shipment-details">
+            <div class="row">
+                <div class="col-12">
+                    <label class="status-msg">{{ 'shipmentDetails.STATUS_PackingInProgress' | translate }}</label>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>{{ 'shipmentDetails.LABEL_ShipmentNumber' | translate }}</label><br>
+                        <span>{{ shipmentDetails.ShipmentNo }}</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                        <div>
+                            @if(shipmentDetails.DeliveryMethod ==="PICK"){
+                                <label>{{ 'shipmentDetails.LABEL_ExpectedPickUpDate' | translate }}</label><br>
+                            }@else {
+                                <label>{{ 'shipmentDetails.LABEL_ExpectedShipDate' | translate }}</label><br>
+                            }
+                            <span>{{ shipmentDetails.ExpectedShipmentDate }}</span>
+                        </div>
+                </div>
+                @if(showInfo){
+                <div class="col-6">
+                    <div>
+                        <label>{{ 'shipmentDetails.LABEL_Carrier' | translate }}</label><br>
+                        <span>some carrier</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>{{ 'shipmentDetails.LABEL_CustomerInfo' | translate }}</label><br>
+                        <span>{{ shipmentDetails.BillToAddress?.FirstName + " " +
+                            shipmentDetails.BillToAddress?.LastName }}</span><br>
+                        <span>{{ shipmentDetails.BillToAddress?.Phonenumber }}</span><br>
+                        <span>{{ shipmentDetails.BillToAddress?.EmailID }}</span><br>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>{{ 'shipmentDetails.LABEL_AssignedTo' | translate }}</label><br>
+                        <span>{{ shipmentDetails.AssignedToUserId }}</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <label>{{ 'shipmentDetails.LABEL_BillTo' | translate }}</label><br>
+                        <span>{{ shipmentDetails.BillToAddress?.FirstName + " " +
+                            shipmentDetails.BillToAddress?.LastName }}</span><br>
+                        <span>{{ shipmentDetails.BillToAddress?.AddressLine1 }}</span><br>
+                        <span>{{ shipmentDetails.BillToAddress?.AddressLine2 }}</span><br>
+                        <span>{{ shipmentDetails.BillToAddress?.City + ", " +
+                            shipmentDetails.BillToAddress?.Country + ", " +
+                            shipmentDetails.BillToAddress?.State + ", " +
+                            shipmentDetails.BillToAddress?.ZipCode }}</span><br>
+                        <span>{{ shipmentDetails.BillToAddress?.Country }}</span><br>
+                    </div>
+                </div>
+            }
+                <div class="col-6">
+                    <div>
+                        <label>{{ 'shipmentDetails.LABEL_ShipTo' | translate }}</label><br>
+
+                        @if (showInfo) {
+                            <span>{{ shipmentDetails.ToAddress?.FirstName + " " +
+                                shipmentDetails.ToAddress?.LastName }}</span><br>
+                            <span>{{ shipmentDetails.ToAddress?.AddressLine1 }}</span><br>
+                            <span>{{ shipmentDetails.ToAddress?.AddressLine2 }}</span><br>
+                        }
+                        <span>{{ shipmentDetails.ToAddress?.City + ", " +
+                            shipmentDetails.ToAddress?.Country + ", " +
+                            shipmentDetails.ToAddress?.State + ", " +
+                            shipmentDetails.ToAddress?.ZipCode }}</span><br>
+                          @if (showInfo) {<span>{{ shipmentDetails.ToAddress?.Country }}</span><br>}
+                    </div>
+                </div>
+                <div class="col-12 btn-container">
+                    <button class="showinfo-btn" (click)="expandInfo()">{{ showInfo ? 'Hide Info' : 'Show Info' | translate }}</button>
+                </div>
+            </div>
+        </div>
+
+        <div >
+            <label class="product-label">{{ 'shipmentDetails.LABEL_Products' | translate }} ({{ shipmentDetails.ShipmentLines?.TotalNumberOfRecords }})</label>
+            <hr/>
+            <div class="container" *ngFor="let product of shipmentDetails.ShipmentLines?.ShipmentLine">
+                <div class="product-tile">                    
+                    <img  [src]="product?.OrderLine?.ItemDetails?.ImageUrl" alt="Product Image" class="product-image">
+                    <div class="product-details">
+                        <label class="product-label">{{ product?.OrderLine?.ItemDetails?.Description }}</label><br>
+                        <span>{{ product?.OrderLine?.ItemDetails?.ItemID }}</span><br>
+                        <span>{{ 'Quantity ' + product?.Quantity +" "+ product?.OrderLine?.ItemDetails?.DisplayUnitOfMeasure }}</span><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }@else {
+        <div class="alert alert-danger">
+            No data available in JSON file! Try other orders.
+          </div>
+    }
+    </div>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { HelperService } from '../../helper.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HomeShipmentSearchComponent implements OnInit {
   searchForm!: FormGroup;
   orderNos: string[] = [];
 
-  constructor(private helperService: HelperService) { }
+  constructor(private helperService: HelperService, private router: Router) { }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -45,7 +46,7 @@ export class HomeShipmentSearchComponent implements OnInit {
 
           if (
             (orderNumberValue && shipment.OrderNo.toLowerCase() === orderNumberValue.toLowerCase()) ||
-            (shipmentNumberValue && shipment.ShipmentNo === shipmentNumberValue.toLowerCase()) ||
+            (shipmentNumberValue && shipment.ShipmentNo.toLowerCase() === shipmentNumberValue.toLowerCase()) ||
             (firstNameValue && shipment.BillToAddress.FirstName.toLowerCase() === firstNameValue.toLowerCase()) ||
             (lastNameValue && shipment.BillToAddress.LastName.toLowerCase() === lastNameValue.toLowerCase()) ||
             (emailValue && shipment.BillToAddress.EMailID.toLowerCase() === emailValue.toLowerCase()) ||
@@ -55,19 +56,20 @@ export class HomeShipmentSearchComponent implements OnInit {
           }
         });
 
-        if (matchedShipments.length >= 1) {
-          //navigate to list 
 
-        } else if (matchedShipments.length === 1) {
-          //todo navigate to result directly
-        } else {
-          console.log("no results found");
-          //todo
-        }
 
-        console.log('matchedShipments');
-        console.log(matchedShipments);
+        this.navigateToShipment(matchedShipments)
       });
+  }
+
+
+  navigateToShipment(matchedShipments:any) {
+   if (matchedShipments.length === 1) {
+      const id = matchedShipments[0].OrderNo;
+      this.router.navigate(['/shipment/details', id]);
+    } else {
+      this.router.navigate(['/shipment']);
+    }
   }
 
 

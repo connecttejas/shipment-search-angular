@@ -7,8 +7,13 @@ import { HelperService } from './helper.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'shipment-search-app';
+  private language = 'en';
   constructor(private helperService: HelperService) {
-    helperService.setDefaultLang('en');
+    helperService.setDefaultLang(this.language);
+  }
+  
+  switchLang(){
+    this.language = this.language === 'en' ? 'fr' : 'en';
+    this.helperService.switchLanguage(this.language);
   }
 }

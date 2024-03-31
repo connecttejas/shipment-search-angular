@@ -9,13 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class HelperService {
 
-  private jsonUrl = 'assets/shipment-list.json';
 
   constructor(private translate: TranslateService, private http: HttpClient) {
   }
 
   public getAllShipments(): Observable<any> {
-    return this.http.get<any>(this.jsonUrl);
+    return this.http.get<any>('assets/shipment-list.json');
+  }
+  
+  public getShipmentDetails(): Observable<any> {
+    return this.http.get<any>('assets/shipment-details.json');
   }
 
   public setDefaultLang(lang: string) {
