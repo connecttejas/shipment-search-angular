@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HelperService } from '../../helper.service';
 import { Shipment } from '../shipment';
@@ -15,8 +15,10 @@ export class ShipmentDetailsComponent implements OnInit {
   public shipmentDetails: Shipment = {};
   public showInfo: boolean = false;
   public isDataAvailable = false;
+  public screenWidth:any;
 
   constructor(private route: ActivatedRoute, private helperService: HelperService, private router: Router) {
+    this.getScreenSize();
   }
 
   ngOnInit(): void {
@@ -29,13 +31,17 @@ export class ShipmentDetailsComponent implements OnInit {
         this.isDataAvailable = false;
         this.shipmentDetails ={};
       }
-    })
+    });
 
+  }
+
+  @HostListener('window:resize',['event'])
+  getScreenSize(e?:any){
+    this.screenWidth = window.innerWidth;
   }
 
   public expandInfo() {
     this.showInfo = !this.showInfo;
-    console.log(this.showInfo)
   }
 
   public onBack() {

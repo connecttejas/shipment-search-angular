@@ -32,13 +32,13 @@
         <div>
             <div *ngFor="let shipment of items"  (click)="onTileClick(shipment)" class="shipment-tile">
                 <div class="row" >
-                    <div class="col-4 ">
+                    <div class="col">
                         <label>{{ 'home.LABEL_OrderNumber' | translate }}{{shipment.OrderNo }}</label>
                         <p class="shipment-info">{{ shipment.ShipmentLines.TotalNumberOfRecords + " "}} {{ 'shipmentResults.TEXT_Products' | translate }}</p>
                         <p class="shipment-info">{{ 'shipmentResults.TEXT_Carrier' | translate }}{{ shipment.ScacAndService}}</p>
                         <p class="shipment-info">{{ 'shipmentResults.TEXT_ShipmentNo' | translate }}<strong  class="text-primary"> {{ shipment.ShipmentNo}}</strong></p>
                     </div>
-                    <div class="col-4">
+                    <div class="col">
                         <label class="status-msg ">{{ shipment.Status }}</label>
                         <p class="shipment-info">{{'shipmentResults.TEXT_AssignedTo' | translate }}{{ shipment.AssignedToUserId  }}</p>
                         @if(shipment.DeliveryMethod==='PICK'){
@@ -48,11 +48,11 @@
                         }
                        
                     </div>
-                    <div class="col-4">
-                        <label class="shipment-info">{{ 'shipmentResults.TEXT_CustomerInfo' | translate }}</label>
-                        <p class="shipment-info">{{ shipment.BillToAddress.FirstName +" "+shipment.BillToAddress.LastName   }}</p>
-                        <p class="shipment-info">{{ 'home.LABEL_PhoneNumber' | translate }}{{ shipment.DayPhone }}</p>
-                        <p class="shipment-info">{{ 'home.LABEL_Email' | translate }}{{ shipment.EMailID }}</p>
+                    <div class="col customer-info-col">
+                            <label class="shipment-info">{{ 'shipmentResults.TEXT_CustomerInfo' | translate }}</label>
+                            <p class="shipment-info">{{ shipment.BillToAddress.FirstName +" "+shipment.BillToAddress.LastName   }}</p>
+                            <p class="shipment-info">{{ 'home.LABEL_PhoneNumber' | translate }}{{ shipment.DayPhone }}</p>
+                            <p class="shipment-info">{{ 'home.LABEL_Email' | translate }}{{ shipment.EMailID }}</p>
                     </div>
                 </div>
                 <hr/>

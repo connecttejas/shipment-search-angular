@@ -90,4 +90,27 @@
 .product-label{
   color: #4D7C90;
   margin-top: 10px;
+  
 }
+
+@media (max-width: 1023px) {
+
+}
+
+@media (max-width: 767px) {
+  .main-container{
+    padding: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container{
+    padding: 5px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+}
+

@@ -1,14 +1,13 @@
 $primary-color: #007bff;
 
-// .screen-height{
-//   min-height: 90%;
-//   height: 100vh;
-// }
+.screen-height{
+background-color: #F5F5F5;
+}
 
 .header {
   background-color: #313131;
   color: #fff;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .left {
@@ -36,3 +35,5 @@ $primary-color: #007bff;
   background-color: #F5F5F5;
   height: 100%;
 }
+
+

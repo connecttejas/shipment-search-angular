@@ -73,7 +73,7 @@
                     </div>
                 </div>
             }
-                <div class="col-6">
+                <div [ngClass]="(screenWidth< 450 && !showInfo) ? 'col-6 d-none d-sm-block' : 'col6'">
                     <div>
                         <label>{{ 'shipmentDetails.LABEL_ShipTo' | translate }}</label><br>
 
@@ -99,14 +99,14 @@
         <div >
             <label class="product-label">{{ 'shipmentDetails.LABEL_Products' | translate }} ({{ shipmentDetails.ShipmentLines?.TotalNumberOfRecords }})</label>
             <hr/>
-            <div class="container" *ngFor="let product of shipmentDetails.ShipmentLines?.ShipmentLine">
-                <div class="product-tile">                    
-                    <img  [src]="product?.OrderLine?.ItemDetails?.ImageUrl" alt="Product Image" class="product-image">
-                    <div class="product-details">
-                        <label class="product-label">{{ product?.OrderLine?.ItemDetails?.Description }}</label><br>
-                        <span>{{ product?.OrderLine?.ItemDetails?.ItemID }}</span><br>
-                        <span>{{ 'Quantity ' + product?.Quantity +" "+ product?.OrderLine?.ItemDetails?.DisplayUnitOfMeasure }}</span><br>
-                    </div>
+            <div class="row">
+                <div class="col product-tile" *ngFor="let product of shipmentDetails.ShipmentLines?.ShipmentLine">
+                        <img  [src]="product?.OrderLine?.ItemDetails?.ImageUrl" alt="Product Image" class="product-image">
+                        <div class="product-details">
+                            <label class="product-label">{{ product?.OrderLine?.ItemDetails?.Description }}</label><br>
+                            <span>{{ product?.OrderLine?.ItemDetails?.ItemID }}</span><br>
+                            <span>{{ 'Quantity ' + product?.Quantity +" "+ product?.OrderLine?.ItemDetails?.DisplayUnitOfMeasure }}</span><br>
+                        </div>
                 </div>
             </div>
         </div>

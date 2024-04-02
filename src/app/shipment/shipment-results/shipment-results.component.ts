@@ -44,7 +44,6 @@ export class ShipmentResultsComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event:any){
-    console.log(document.body.offsetHeight);
     if((window.innerHeight + window.scrollY)+1 >= document.body.offsetHeight){
       this.loadShipments();
     }
@@ -114,10 +113,7 @@ export class ShipmentResultsComponent implements OnInit {
     this.helperService.getShipmentListScroll(this.page, this.pageSize)
     .pipe(delay(fakeDelayForLoading))
     .subscribe(newItems=>{
-      console.log("this.items",this.items);
-      console.log("this.newItems",newItems);
       this.items = [...this.items, ...newItems];
-      console.log("this.items",this.items);
       this.page++;
       this.isLoading = false;
     })
