@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { HelperService } from '../../helper.service';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-shipment-results',
@@ -21,8 +22,15 @@ export class ShipmentResultsComponent implements OnInit {
     "Shipped/Picked",
     "Cancelled"
   ];
+  
+  public items : any[] = [];
+  private page : number = 1;
+  private pageSize : number = 5;
+  public isLoading: boolean = false;
+
 
   constructor(private helperService: HelperService, private router: Router) {
+    this.loadShipments();
   }
 
   ngOnInit(): void {
@@ -33,6 +41,15 @@ export class ShipmentResultsComponent implements OnInit {
 
       });
   }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event:any){
+    console.log(document.body.offsetHeight);
+    if((window.innerHeight + window.scrollY)+1 >= document.body.offsetHeight){
+      this.loadShipments();
+    }
+  }
+
 
   public onBack() {
     history.back();
@@ -66,7 +83,6 @@ export class ShipmentResultsComponent implements OnInit {
       const checkbox = document.getElementById(status) as HTMLInputElement;
       return checkbox.checked;
     }) ?? [];
-    console.log("Selected Statuses:", selectedStatuses);
 
     if (selectedStatuses.length === 0) {
       this.filteredShipmentListResponse = { ...this.shipmentListResponse };
@@ -90,6 +106,21 @@ export class ShipmentResultsComponent implements OnInit {
         checkbox.checked = false;
       }
     });
+  }
+
+  public loadShipments(){
+    this.isLoading = true
+    const fakeDelayForLoading = 2000;
+    this.helperService.getShipmentListScroll(this.page, this.pageSize)
+    .pipe(delay(fakeDelayForLoading))
+    .subscribe(newItems=>{
+      console.log("this.items",this.items);
+      console.log("this.newItems",newItems);
+      this.items = [...this.items, ...newItems];
+      console.log("this.items",this.items);
+      this.page++;
+      this.isLoading = false;
+    })
   }
 
 }

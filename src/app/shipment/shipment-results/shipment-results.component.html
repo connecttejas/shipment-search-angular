@@ -1,3 +1,12 @@
+<div *ngIf="isLoading" class="loading-panel">
+    <div class="loading-panel-mask"></div>
+    <div class="loading-panel-wrapper">
+        <div class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading Shipments...
+        </div>
+    </div>
+</div>
 <div class="main-body">
     <div class="main-container">
         <div class="sub-container">
@@ -14,37 +23,40 @@
         <hr/>
 
         <div class="sub-container">
-            <div class="text"><strong>{{filteredShipmentListResponse.Shipments.TotalNumberOfRecords}}</strong> {{ 'shipmentResults.TEXT_Results' | translate }}</div>
+            <div class="text"><strong>{{filteredShipmentListResponse?.Shipments?.TotalNumberOfRecords}}</strong> {{ 'shipmentResults.TEXT_Results' | translate }}</div>
             <div  class="btn btn-primary filter-icon" (click)="openFilterPopUp()">{{ 'shipmentResults.TEXT_FilterIcon' | translate }}</div>
         </div>
         <hr/>
 
-        <div *ngFor="let shipment of filteredShipmentListResponse.Shipments.Shipment"  (click)="onTileClick(shipment)" class="shipment-tile">
-            <div class="row" >
-                <div class="col-4 ">
-                    <label>{{ 'home.LABEL_OrderNumber' | translate }}{{shipment.OrderNo }}</label>
-                    <p class="shipment-info">{{ shipment.ShipmentLines.TotalNumberOfRecords + " "}} {{ 'shipmentResults.TEXT_Products' | translate }}</p>
-                    <p class="shipment-info">{{ 'shipmentResults.TEXT_Carrier' | translate }}{{ shipment.ScacAndService}}</p>
-                    <p class="shipment-info">{{ 'shipmentResults.TEXT_ShipmentNo' | translate }}<strong  class="text-primary"> {{ shipment.ShipmentNo}}</strong></p>
+
+        <div>
+            <div *ngFor="let shipment of items"  (click)="onTileClick(shipment)" class="shipment-tile">
+                <div class="row" >
+                    <div class="col-4 ">
+                        <label>{{ 'home.LABEL_OrderNumber' | translate }}{{shipment.OrderNo }}</label>
+                        <p class="shipment-info">{{ shipment.ShipmentLines.TotalNumberOfRecords + " "}} {{ 'shipmentResults.TEXT_Products' | translate }}</p>
+                        <p class="shipment-info">{{ 'shipmentResults.TEXT_Carrier' | translate }}{{ shipment.ScacAndService}}</p>
+                        <p class="shipment-info">{{ 'shipmentResults.TEXT_ShipmentNo' | translate }}<strong  class="text-primary"> {{ shipment.ShipmentNo}}</strong></p>
+                    </div>
+                    <div class="col-4">
+                        <label class="status-msg ">{{ shipment.Status }}</label>
+                        <p class="shipment-info">{{'shipmentResults.TEXT_AssignedTo' | translate }}{{ shipment.AssignedToUserId  }}</p>
+                        @if(shipment.DeliveryMethod==='PICK'){
+                            <p class="shipment-info"><span>{{'shipmentResults.TEXT_ExpectedPickupDate' | translate }} </span>{{ shipment.ExpectedShipmentDate}}</p>
+                        }@else {
+                            <p class="shipment-info"><span>{{'shipmentResults.TEXT_ExpectedShipDate' | translate }} </span>{{ shipment.ExpectedShipmentDate}}</p>
+                        }
+                       
+                    </div>
+                    <div class="col-4">
+                        <label class="shipment-info">{{ 'shipmentResults.TEXT_CustomerInfo' | translate }}</label>
+                        <p class="shipment-info">{{ shipment.BillToAddress.FirstName +" "+shipment.BillToAddress.LastName   }}</p>
+                        <p class="shipment-info">{{ 'home.LABEL_PhoneNumber' | translate }}{{ shipment.DayPhone }}</p>
+                        <p class="shipment-info">{{ 'home.LABEL_Email' | translate }}{{ shipment.EMailID }}</p>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <label class="status-msg ">{{ shipment.Status }}</label>
-                    <p class="shipment-info">{{'shipmentResults.TEXT_AssignedTo' | translate }}{{ shipment.AssignedToUserId  }}</p>
-                    @if(shipment.DeliveryMethod==='PICK'){
-                        <p class="shipment-info"><span>{{'shipmentResults.TEXT_ExpectedPickupDate' | translate }} </span>{{ shipment.ExpectedShipmentDate}}</p>
-                    }@else {
-                        <p class="shipment-info"><span>{{'shipmentResults.TEXT_ExpectedShipDate' | translate }} </span>{{ shipment.ExpectedShipmentDate}}</p>
-                    }
-                   
-                </div>
-                <div class="col-4">
-                    <label class="shipment-info">{{ 'shipmentResults.TEXT_CustomerInfo' | translate }}</label>
-                    <p class="shipment-info">{{ shipment.BillToAddress.FirstName +" "+shipment.BillToAddress.LastName   }}</p>
-                    <p class="shipment-info">{{ 'home.LABEL_PhoneNumber' | translate }}{{ shipment.DayPhone }}</p>
-                    <p class="shipment-info">{{ 'home.LABEL_Email' | translate }}{{ shipment.EMailID }}</p>
-                </div>
+                <hr/>
             </div>
-            <hr/>
         </div>
     </div>
 </div>
